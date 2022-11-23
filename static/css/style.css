@@ -1,0 +1,19 @@
+* {
+    margin: none;
+    font-family: Arial;
+}
+
+body {
+    background: url("../images/webpage_bg.jpg");
+    background-position: cover;
+}
+
+form {
+    background-color: rgba(256,256,256,0.4);
+    width: 80%;
+}
+
+input {
+    display: block;
+    padding: 10px;
+}
