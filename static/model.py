@@ -14,8 +14,8 @@ print(df.head())
 # Select independent and dependent variable
 from sklearn import linear_model
 regr = linear_model.LinearRegression()
-x = np.asanyarray(df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB']])
-y = np.asanyarray(df[['CO2EMISSIONS']])
+x = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB']]
+y = df[['CO2EMISSIONS']]
 regr.fit(x,y)
 
 
