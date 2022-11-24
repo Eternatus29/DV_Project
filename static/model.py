@@ -8,19 +8,25 @@ import pickle
 
 # Load the csv file
 df = pd.read_csv("FuelConsumption.csv")
+df = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB','CO2EMISSIONS']]
 
 print(df.head())
 
-# Select independent and dependent variable
-from sklearn import linear_model
-regr = linear_model.LinearRegression()
-x = df[['ENGINESIZE','CYLINDERS','FUELCONSUMPTION_COMB']]
-y = df[['CO2EMISSIONS']]
-regr.fit(x,y)
+y_data = df.iloc[:, 3].values
+x_data = df.iloc[:, [0,1,2]].values
+
+from sklearn.model_selection import train_test_split
+x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.25, random_state=42)
+
+from sklearn.linear_model import LinearRegression
+clf = LinearRegression()
+clf.fit(x_train, y_train)
+yhat_test = clf.predict(x_test)
+yhat_train = clf.predict(x_train)
 
 
 # Make pickle file of our model
-pickle.dump(regr, open("model.pkl", "wb"))
+pickle.dump(clf, open("model.pkl", "wb"))
 
 import os
 os.getcwd()
