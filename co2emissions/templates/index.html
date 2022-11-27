@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    * {
+        margin: none;
+        font-family: Arial;
+        font-weight: bold;
+        transition: 300ms;
+    }
+
+    body {
+        background-image: linear-gradient(rgba(200,0,256), white);
+        background-size: cover;
+    }
+    
+    h1 {
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    form {
+        background-color: rgba(0,0,0,0.6);
+        width: 80%;
+        margin: auto;
+        padding: 4%;
+        border-radius: 30px;
+        margin-top: 60px;
+    }
+    
+    label, input {
+        position: relative;
+        display: block;
+        padding: 10px;
+        width: 90%;
+        margin: auto;
+    }
+    
+    label {
+        padding-top: 60px;
+    }
+    
+    input, button {
+        border-radius: 10px;
+    }
+    
+    button {
+        width: 60%;
+        padding: 1.5%;
+        position: relative;
+        margin-left: 20%;
+        margin-top: 10px;
+    }
+    
+    .btn:hover {
+        background-color: #00ff00;
+    }
+    
+    input:focus {
+        background-color: yellow;
+        transition: 500ms;
+    }
+    </style>
+    <title>Carbon Dioxide emissions</title>
+</head>
+<body>
+    <h1>Carbon Dioxide emissions</h1>
+    <form method = 'post'>
+        {% csrf_token  %}
+        <label>Engine Size</label>
+        <input type = 'text' id = 'size' name = 'size' />
+        <label>Number of Cylinders</label>
+        <input type = 'text' id = 'cyl' name = 'cyl' />
+        <label>Fuel Consumption (combined)(in L per 100 km)</label>
+        <input type = 'text' id = 'fuel' name = 'fuel'/>
+        <button type = 'submit' class = 'btn'>Predict!</button>
+    </form>
+    <center>{{prediction}}</center>
+</body>
+</html>
